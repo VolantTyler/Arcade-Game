@@ -1,3 +1,10 @@
+The Arcade Game: Udacity Front End Web Developer Nanodegree, Project 3
+======================================================================
+
+
+>>>>>>>>>>>
+Initial Udacity Readme:
+
 frontend-nanodegree-arcade-game
 ===============================
 
