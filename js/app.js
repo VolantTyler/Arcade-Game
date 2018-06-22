@@ -36,7 +36,16 @@ var Player = function(x,y) {
     this.y = y;
 };
 Player.prototype.update = function() {
-    player.render();
+    //mycode
+    //collision detection
+
+    //restrict player to game board
+    
+    //win condition
+    if (this.y < 40) {
+        console.log("You win!");
+        player.reset();
+    }
 };
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -55,6 +64,10 @@ Player.prototype.handleInput = function(key) {
     }
    // player.update();
 };
+Player.prototype.reset = function() {
+    this.x = 0;
+    this.y = 400;
+}
 
 
 
