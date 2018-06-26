@@ -25,22 +25,23 @@ Enemy.prototype.update = function(dt) {
     //mycode
     //enemy movement, variable speed
     this.x += this.speed * dt * 50;
-    //when enemy reaches right side of the board, reset to starting position
+    //when enemy reaches right side of the board, reset position and speed
     if (this.x > 400) {
         this.reset();
-        this.speed = Math.floor(Math.random() * 5 + 1 );
     }
 };
 
+//mycode
+//reset to starting position and create new random speed
+Enemy.prototype.reset = function() {
+    this.x = 0;
+    this.speed = Math.floor(Math.random() * 5 + 1 );
+}
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-//mycode
-Enemy.prototype.reset = function() {
-    this.x = 0;
-}
 
 // Now write your own player class
 // This class requires an update(), render() and
