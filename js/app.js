@@ -24,11 +24,11 @@ Enemy.prototype.update = function(dt) {
 
     //mycode
     //enemy movement, variable speed
-    this.x += this.speed * dt * 10;
+    this.x += this.speed * dt * 50;
     //when enemy reaches right side of the board, reset to starting position
     if (this.x > 400) {
         this.reset();
-        this.speed = Math.floor(Math.random() * 200 + 1 );
+        this.speed = Math.floor(Math.random() * 5 + 1 );
     }
 };
 
