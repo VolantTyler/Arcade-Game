@@ -1,6 +1,9 @@
 The Arcade Game: Udacity Front End Web Developer Nanodegree, Project 3
 ======================================================================
 
+Note: Due to the large volume of comments in the starter code, I have preceded all of my original code additions with //mycode
+
+
 
 >>>>>>>>>>>
 Initial Udacity Readme:

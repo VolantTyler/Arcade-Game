@@ -26,6 +26,11 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+//mycode
+Enemy.prototype.reset = function() {
+    this.x = 0;
+}
+
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
@@ -62,7 +67,6 @@ Player.prototype.handleInput = function(key) {
     } else {
         return;
     }
-   // player.update();
 };
 Player.prototype.reset = function() {
     this.x = 0;
