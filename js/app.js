@@ -59,8 +59,10 @@ Player.prototype.update = function() {
     allEnemies.forEach(function (enemy) {
         if (enemy.x < player.x + 70  && enemy.x + 70  > player.x &&
             enemy.y < player.y + 70 && enemy.y + 70 > player.y){
-            window.alert('ouch');
-            player.reset();
+            //window.alert('ouch');
+            player.sprite = 'images/Star.png';
+            setTimeout(player.reset(), 1000);
+            //player.reset();
         };
     });
     
@@ -90,6 +92,7 @@ Player.prototype.handleInput = function(key) {
 Player.prototype.reset = function() {
     this.x = 0;
     this.y = 400;
+    //this.sprite = 'images/char-boy.png';
 }
 
 //mycode
