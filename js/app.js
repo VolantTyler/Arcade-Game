@@ -59,12 +59,9 @@ Player.prototype.update = function() {
     allEnemies.forEach(function (enemy) {
         if (enemy.x < player.x + 70  && enemy.x + 70  > player.x &&
             enemy.y < player.y + 70 && enemy.y + 70 > player.y){
-            swal({
-                title: 'Ouch!',
-                icon: 'warning',
-            });
             //player.sprite = 'images/explosion.png';
             //setTimeout(player.reset, 1000);
+            player.ouch();
             player.reset();
         };
     });
@@ -101,10 +98,15 @@ Player.prototype.victory = function(){
     //Victory message - starter code from https://sweetalert.js.org/guides/ 
     swal({
       title: 'You win!', 
-      text: 'Amazing!',
       icon: "success",
     })
   };
+Player.prototype.ouch = function() {
+    swal({
+        title: 'Ouch!',
+        icon: 'warning',
+    });
+}
 
 
 //mycode
