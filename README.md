@@ -1,8 +1,26 @@
 The Arcade Game: Udacity Front End Web Developer Nanodegree, Project 3
 ======================================================================
 
+## Table of Contents
+
+* [Purpose](#purpose)
+* [Gameplay](#gameplay) 
+* [Learning](#learning)
+
+
 Note: Due to the large volume of comments in the starter code, I have preceded all of my original code additions with //mycode
 
+## Purpose
+
+This third project of the Udacity Front-End Web Developer Nanodegree (FEND) instructed me to build a functional Javascript version of the arcade game Frogger. I refined my understanding of JavaScript in this project by following object-oriented programming throughout.
+
+## Gameplay
+
+Use arrow keys to move player left, right, up or down on the game board. Player cannot move off of the game board. If player is hit with an enemy/bug, the player resets to original position. If player makes it to the water, player wins!
+
+## Learning
+
+My biggest takeaway from this project was a better understanding of the 'prototype' of constructor functions. Prior to this project, I did not understand why we would add functions to a Player.prototype, for example, rather than to Player itself. Working with functions and prototypes, I learned that prototype functions can run multiple times, while objects are created with properties once. I suspect I have more to learn about this principle, but having to work with classes and objects got me farther down the road.
 
 
 >>>>>>>>>>>
