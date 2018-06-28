@@ -54,10 +54,24 @@ var Player = function(x,y) {
 };
 Player.prototype.update = function() {
     //mycode
-    //collision detection    
+    //collision detection   
+    //principle learned from http://blog.sklambert.com/html5-canvas-game-2d-collision-detection
+    allEnemies.forEach(function (enemy) {
+        if (enemy.x < player.x + 70  && enemy.x + 70  > player.x &&
+            enemy.y < player.y + 70 && enemy.y + 70 > player.y){
+            swal({
+                title: 'Ouch!',
+                icon: 'warning',
+            });
+            //player.sprite = 'images/explosion.png';
+            //setTimeout(player.reset, 1000);
+            player.reset();
+        };
+    });
+    
     //win condition
     if (this.y < 40) {
-        console.log("You win!");
+        this.victory();
         this.reset();
     }
 };
@@ -81,7 +95,17 @@ Player.prototype.handleInput = function(key) {
 Player.prototype.reset = function() {
     this.x = 0;
     this.y = 400;
+    //this.sprite = 'images/char-boy.png';
 }
+Player.prototype.victory = function(){
+    //Victory message - starter code from https://sweetalert.js.org/guides/ 
+    swal({
+      title: 'You win!', 
+      text: 'Amazing!',
+      icon: "success",
+    })
+  };
+
 
 //mycode
 //click reset button returns player and enemies to starting position
