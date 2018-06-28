@@ -83,7 +83,15 @@ Player.prototype.reset = function() {
     this.y = 400;
 }
 
-
+//mycode
+//click reset button returns player and enemies to starting position
+const resetButton = document.getElementById('reset');
+resetButton.addEventListener('click', function(){
+    allEnemies.forEach(function (enemy) {
+        enemy.reset();
+    });
+    player.reset();
+});
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
