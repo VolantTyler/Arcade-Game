@@ -59,16 +59,19 @@ Player.prototype.update = function() {
     allEnemies.forEach(function (enemy) {
         if (enemy.x < player.x + 70  && enemy.x + 70  > player.x &&
             enemy.y < player.y + 70 && enemy.y + 70 > player.y){
-            //window.alert('ouch');
-            player.sprite = 'images/explosion.png';
-            setTimeout(player.reset, 1000);
-            //player.reset();
+            swal({
+                title: 'Ouch!',
+                icon: 'warning',
+            });
+            //player.sprite = 'images/explosion.png';
+            //setTimeout(player.reset, 1000);
+            player.reset();
         };
     });
     
     //win condition
     if (this.y < 40) {
-        window.alert("You win!");
+        this.victory();
         this.reset();
     }
 };
@@ -94,6 +97,15 @@ Player.prototype.reset = function() {
     this.y = 400;
     //this.sprite = 'images/char-boy.png';
 }
+Player.prototype.victory = function(){
+    //Victory message - starter code from https://sweetalert.js.org/guides/ 
+    swal({
+      title: 'You win!', 
+      text: 'Amazing!',
+      icon: "success",
+    })
+  };
+
 
 //mycode
 //click reset button returns player and enemies to starting position
