@@ -1,11 +1,10 @@
 //mycode
 //declare variable for freezing keyboard
 let freezeKey = 0;
-
 const resetButton = document.getElementById('reset');
 
 
-var Enemy = function(x,y, speed = Math.floor(Math.random() * 4 + 1 )) {
+let Enemy = function(x,y, speed = Math.floor(Math.random() * 4 + 1 )) {
     this.sprite = 'images/enemy-bug.png';
 
     //mycode
@@ -67,8 +66,6 @@ Player.prototype.update = function() {
                     freezeKey = 0;
                     player.reset();
                 }, 1500);
-                //player.ouch();
-                //player.reset();
             };
         } else {
             return;
@@ -110,6 +107,7 @@ Player.prototype.handleInput = function(key) {
 Player.prototype.reset = function() {
     this.x = 0;
     this.y = 400;
+    //player icon is set to boy on reset
     this.sprite = 'images/char-boy.png';
 }
 Player.prototype.victory = function(){
@@ -118,6 +116,8 @@ Player.prototype.victory = function(){
       title: 'You win!', 
       icon: "success",
     })
+    //if ok button is pressed, or user clicks outside of modal
+    //unfreeze keyboard
     .then((value) => {
         if (value) {
             freezeKey = 0;
