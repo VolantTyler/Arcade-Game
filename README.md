@@ -19,7 +19,7 @@ This third project of the Udacity Front-End Web Developer Nanodegree (FEND) inst
 
 Option 1: Visit http://arcadegame.volantweb.com/ for a live, functioning version of the game. (And then visit volantweb.com to see more of my recent clients!)
 
-Option 2: Run the game locally on your computer
+Option 2: Run the game locally on your computer (requires Internet connection, JavaScript, HTML, CSS)
 * Download the repository from GitHub
 * Open the downloaded folder
 * Double-click on the 'index.html' file, or drag it into your web browser of choice
