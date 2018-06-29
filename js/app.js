@@ -1,10 +1,4 @@
-// Enemies our player must avoid
 var Enemy = function(x,y, speed = Math.floor(Math.random() * 4 + 1 )) {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
-
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
 
     //mycode
@@ -15,15 +9,11 @@ var Enemy = function(x,y, speed = Math.floor(Math.random() * 4 + 1 )) {
     this.speed = speed;
 };
 
-// Update the enemy's position, required method for game
-// Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
 
     //mycode
     //enemy movement, variable speed
+    //number 75 chosen to create playable/challenging enemy movement speeds
     this.x += this.speed * dt * 75;
     //when enemy reaches right side of the board, reset position and speed
     if (this.x > 500) {
@@ -37,15 +27,12 @@ Enemy.prototype.reset = function() {
     this.x = -100;
     this.speed = Math.floor(Math.random() * 4 + 1 );
 }
-// Draw the enemy on the screen, required method for game
+
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 
-// Now write your own player class
-// This class requires an update(), render() and
-// a handleInput() method.
 //mycode
 var Player = function(x,y) {
     this.sprite = 'images/char-boy.png';
@@ -59,10 +46,10 @@ Player.prototype.update = function() {
     allEnemies.forEach(function (enemy) {
         if (enemy.x < player.x + 70  && enemy.x + 70  > player.x &&
             enemy.y < player.y + 70 && enemy.y + 70 > player.y){
-            //player.sprite = 'images/explosion.png';
-            //setTimeout(player.reset, 1000);
-            player.ouch();
-            player.reset();
+            player.sprite = 'images/explosion.png';
+            setTimeout(player.reset(), 1000);
+            //player.ouch();
+            //player.reset();
         };
     });
     
@@ -85,6 +72,7 @@ Player.prototype.handleInput = function(key) {
         this.y += 85;
     } else if ((key === "right") && (this.x < 400)) {
         this.x += 100;
+    //if any non-arrow key is pressed, do nothing
     } else {
         return;
     }
@@ -92,10 +80,10 @@ Player.prototype.handleInput = function(key) {
 Player.prototype.reset = function() {
     this.x = 0;
     this.y = 400;
-    //this.sprite = 'images/char-boy.png';
+    this.sprite = 'images/char-boy.png';
 }
 Player.prototype.victory = function(){
-    //Victory message - starter code from https://sweetalert.js.org/guides/ 
+    //Victory and defeat messages - starter code from https://sweetalert.js.org/guides/ 
     swal({
       title: 'You win!', 
       icon: "success",
@@ -119,16 +107,16 @@ resetButton.addEventListener('click', function(){
     player.reset();
 });
 
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
+
 //mycode
+//create and place three enemies in each of three "lanes"
 const enemy1 = new Enemy(0, 50);
 const enemy2 = new Enemy(0, 135);
 const enemy3 = new Enemy(0, 215);
 const allEnemies = [enemy1, enemy2, enemy3];
 
-// Place the player object in a variable called player
 //mycode
+//create player
 let player = new Player(0, 400);
 
 
