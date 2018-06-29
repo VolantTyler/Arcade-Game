@@ -2,6 +2,9 @@
 //declare variable for freezing keyboard
 let freezeKey = 0;
 
+const resetButton = document.getElementById('reset');
+
+
 var Enemy = function(x,y, speed = Math.floor(Math.random() * 4 + 1 )) {
     this.sprite = 'images/enemy-bug.png';
 
@@ -48,19 +51,28 @@ Player.prototype.update = function() {
     //collision detection   
     //principle learned from http://blog.sklambert.com/html5-canvas-game-2d-collision-detection
     allEnemies.forEach(function (enemy) {
-        if (enemy.x < player.x + 70  && enemy.x + 70  > player.x &&
-            enemy.y < player.y + 70 && enemy.y + 70 > player.y){
-            player.sprite = 'images/explosion.png';
-            //thanks to FEND student Moschops [FEND] PDX
-            //for suggestions for keyboard freeze and timeout
-            freezeKey = 1;
-            setTimeout(function() {
-                freezeKey = 0;
-                player.reset();
-            }, 1500);
-            //player.ouch();
-            //player.reset();
-        };
+        //only checks for collision if collision has not happened 
+        //i.e. if player is boy, check; if player is explosion, do not check
+        if (player.sprite === 'images/char-boy.png') {
+            if (enemy.x < player.x + 70  && enemy.x + 70  > player.x &&
+                enemy.y < player.y + 70 && enemy.y + 70 > player.y){
+                player.sprite = 'images/explosion.png';
+                //adjust explosion image position to center on player position
+                player.x += 25;
+                player.y += 75;
+                //thanks to FEND student Moschops [FEND] PDX
+                //for suggestions for keyboard freeze and timeout
+                freezeKey = 1;
+                setTimeout(function() {
+                    freezeKey = 0;
+                    player.reset();
+                }, 1500);
+                //player.ouch();
+                //player.reset();
+            };
+        } else {
+            return;
+        }
     });
     
     //win condition
@@ -115,7 +127,6 @@ Player.prototype.ouch = function() {
 
 //mycode
 //click reset button returns player and enemies to starting position
-const resetButton = document.getElementById('reset');
 resetButton.addEventListener('click', function(){
     allEnemies.forEach(function (enemy) {
         enemy.reset();
