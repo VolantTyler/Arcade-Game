@@ -26,7 +26,7 @@ Enemy.prototype.update = function(dt) {
     //enemy movement, variable speed
     this.x += this.speed * dt * 50;
     //when enemy reaches right side of the board, reset position and speed
-    if (this.x > 400) {
+    if (this.x > 500) {
         this.reset();
     }
 };
@@ -34,7 +34,7 @@ Enemy.prototype.update = function(dt) {
 //mycode
 //reset to starting position and create new random speed
 Enemy.prototype.reset = function() {
-    this.x = 0;
+    this.x = -100;
     this.speed = Math.floor(Math.random() * 5 + 1 );
 }
 // Draw the enemy on the screen, required method for game
