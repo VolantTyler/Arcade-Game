@@ -1,3 +1,7 @@
+//mycode
+//declare variable for freezing keyboard
+let freezeKey = 0;
+
 var Enemy = function(x,y, speed = Math.floor(Math.random() * 4 + 1 )) {
     this.sprite = 'images/enemy-bug.png';
 
@@ -46,10 +50,16 @@ Player.prototype.update = function() {
     allEnemies.forEach(function (enemy) {
         if (enemy.x < player.x + 70  && enemy.x + 70  > player.x &&
             enemy.y < player.y + 70 && enemy.y + 70 > player.y){
-            //player.sprite = 'images/explosion.png';
-            //setTimeout(player.reset(), 1000);
-            player.ouch();
-            player.reset();
+            player.sprite = 'images/explosion.png';
+            //thanks to FEND student Moschops [FEND] PDX
+            //for suggestions for keyboard freeze and timeout
+            freezeKey = 1;
+            setTimeout(function() {
+                freezeKey = 0;
+                player.reset();
+            }, 1500);
+            //player.ouch();
+            //player.reset();
         };
     });
     
@@ -63,16 +73,22 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 Player.prototype.handleInput = function(key) {
-    if (key === "up") {
-        this.y -= 85;
-    //restrict player to game board with && conditionals
-    } else if ((key === "left") && (this.x > 0)) {
-        this.x -= 100;
-    } else if ((key === "down") && (this.y < 400)) {
-        this.y += 85;
-    } else if ((key === "right") && (this.x < 400)) {
-        this.x += 100;
-    //if any non-arrow key is pressed, do nothing
+    //freezeKey checks if keyboard should be frozen due to
+    //recent collision
+    if (freezeKey === 0) {
+        if (key === "up") {
+            this.y -= 85;
+        //restrict player to game board with && conditionals
+        } else if ((key === "left") && (this.x > 0)) {
+            this.x -= 100;
+        } else if ((key === "down") && (this.y < 400)) {
+            this.y += 85;
+        } else if ((key === "right") && (this.x < 400)) {
+            this.x += 100;
+        //if any non-arrow key is pressed, do nothing
+        } else {
+            return;
+        }
     } else {
         return;
     }
