@@ -46,10 +46,10 @@ Player.prototype.update = function() {
     allEnemies.forEach(function (enemy) {
         if (enemy.x < player.x + 70  && enemy.x + 70  > player.x &&
             enemy.y < player.y + 70 && enemy.y + 70 > player.y){
-            player.sprite = 'images/explosion.png';
-            setTimeout(player.reset(), 1000);
-            //player.ouch();
-            //player.reset();
+            //player.sprite = 'images/explosion.png';
+            //setTimeout(player.reset(), 1000);
+            player.ouch();
+            player.reset();
         };
     });
     
