@@ -77,6 +77,8 @@ Player.prototype.update = function() {
     
     //win condition
     if (this.y < 40) {
+        //lock keyboard until button clicked in victory modal
+        freezeKey = 1;
         this.victory();
         this.reset();
     }
@@ -111,18 +113,20 @@ Player.prototype.reset = function() {
     this.sprite = 'images/char-boy.png';
 }
 Player.prototype.victory = function(){
-    //Victory and defeat messages - starter code from https://sweetalert.js.org/guides/ 
+    //Victory message - starter code from https://sweetalert.js.org/guides/ 
     swal({
       title: 'You win!', 
       icon: "success",
     })
+    .then((value) => {
+        if (value) {
+            freezeKey = 0;
+        } else {
+            freezeKey = 0;
+        }
+    })
   };
-Player.prototype.ouch = function() {
-    swal({
-        title: 'Ouch!',
-        icon: 'warning',
-    });
-}
+
 
 
 //mycode
@@ -132,6 +136,7 @@ resetButton.addEventListener('click', function(){
         enemy.reset();
     });
     player.reset();
+    freeze = 0;
 });
 
 
