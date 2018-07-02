@@ -47,30 +47,31 @@ var Player = function(x,y) {
 };
 Player.prototype.update = function() {
     //mycode
-    //collision detection   
-    //principle learned from http://blog.sklambert.com/html5-canvas-game-2d-collision-detection
-    allEnemies.forEach(function (enemy) {
-        //only checks for collision if collision has not happened 
-        //i.e. if player is boy, check; if player is explosion, do not check
-        if (player.sprite === 'images/char-boy.png') {
-            if (enemy.x < player.x + 70  && enemy.x + 70  > player.x &&
-                enemy.y < player.y + 70 && enemy.y + 70 > player.y){
-                player.sprite = 'images/explosion.png';
+    let avatar = this;
+    //only checks for collision if collision has not happened 
+    //i.e. if player is boy, check; if player is explosion, do not check
+    if (this.sprite === 'images/char-boy.png') {
+        //collision detection   
+        //principle learned from http://blog.sklambert.com/html5-canvas-game-2d-collision-detection
+        allEnemies.forEach(function (enemy) {
+            if (enemy.x < avatar.x + 70  && enemy.x + 70  > avatar.x &&
+                enemy.y < avatar.y + 70 && enemy.y + 70 > avatar.y){
+                avatar.sprite = 'images/explosion.png';
                 //adjust explosion image position to center on player position
-                player.x += 25;
-                player.y += 75;
+                avatar.x += 25;
+                avatar.y += 75;
                 //thanks to FEND student Moschops [FEND] PDX
                 //for suggestions for keyboard freeze and timeout
                 freezeKey = 1;
                 setTimeout(function() {
                     freezeKey = 0;
-                    player.reset();
+                    avatar.reset();
                 }, 1500);
-            };
-        } else {
-            return;
-        }
-    });
+            } else {
+                return;
+            }
+        });
+    };
     
     //win condition
     if (this.y < 40) {
