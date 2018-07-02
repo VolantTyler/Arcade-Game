@@ -47,25 +47,26 @@ var Player = function(x,y) {
 };
 Player.prototype.update = function() {
     //mycode
-    let avatar = this;
     //only checks for collision if collision has not happened 
     //i.e. if player is boy, check; if player is explosion, do not check
     if (this.sprite === 'images/char-boy.png') {
-        //collision detection   
-        //principle learned from http://blog.sklambert.com/html5-canvas-game-2d-collision-detection
-        allEnemies.forEach(function (enemy) {
-            if (enemy.x < avatar.x + 70  && enemy.x + 70  > avatar.x &&
-                enemy.y < avatar.y + 70 && enemy.y + 70 > avatar.y){
-                avatar.sprite = 'images/explosion.png';
+        //arrow function allows 'this' to refer to Player within .forEach()
+        //thanks to my mentor Vince and @Sachin for directing me to this solution
+        allEnemies.forEach( (enemy) => {
+            //collision detection   
+            //principle learned from http://blog.sklambert.com/html5-canvas-game-2d-collision-detection
+            if (enemy.x < this.x + 70  && enemy.x + 70  > this.x &&
+                enemy.y < this.y + 70 && enemy.y + 70 > this.y){
+                this.sprite = 'images/explosion.png';
                 //adjust explosion image position to center on player position
-                avatar.x += 25;
-                avatar.y += 75;
+                this.x += 25;
+                this.y += 75;
                 //thanks to FEND student Moschops [FEND] PDX
                 //for suggestions for keyboard freeze and timeout
                 freezeKey = 1;
-                setTimeout(function() {
+                setTimeout(() => {
                     freezeKey = 0;
-                    avatar.reset();
+                    this.reset();
                 }, 1500);
             } else {
                 return;
