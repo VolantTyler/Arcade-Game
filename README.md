@@ -4,7 +4,7 @@ The Arcade Game: Udacity Front End Web Developer Nanodegree, Project 3
 ## Table of Contents
 
 * [Purpose](#purpose)
-* [How to Run](#how to run)
+* [How to Run](#how_to_run)
 * [Gameplay](#gameplay) 
 * [Learning](#learning)
 
