@@ -9,13 +9,13 @@ The Arcade Game: Udacity Front End Web Developer Nanodegree, Project 3
 * [Learning](#learning)
 
 
-Note: Due to the large volume of comments in the starter code, I have preceded all of my original code additions with //mycode
+Note: Due to the large volume of starter code provided, I have preceded all of my original code additions with //mycode
 
 ## Purpose
 
 This third project of the Udacity Front-End Web Developer Nanodegree (FEND) instructed me to build a functional Javascript version of the arcade game Frogger. I refined my understanding of JavaScript in this project by following object-oriented programming throughout.
 
-## How to Run
+## How_to_Run
 
 Option 1: Visit http://arcadegame.volantweb.com/ for a live, functioning version of the game. (And then visit volantweb.com to see more of my recent clients!)
 
