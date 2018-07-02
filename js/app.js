@@ -47,30 +47,32 @@ var Player = function(x,y) {
 };
 Player.prototype.update = function() {
     //mycode
-    //collision detection   
-    //principle learned from http://blog.sklambert.com/html5-canvas-game-2d-collision-detection
-    allEnemies.forEach(function (enemy) {
-        //only checks for collision if collision has not happened 
-        //i.e. if player is boy, check; if player is explosion, do not check
-        if (player.sprite === 'images/char-boy.png') {
-            if (enemy.x < player.x + 70  && enemy.x + 70  > player.x &&
-                enemy.y < player.y + 70 && enemy.y + 70 > player.y){
-                player.sprite = 'images/explosion.png';
+    //only checks for collision if collision has not happened 
+    //i.e. if player is boy, check; if player is explosion, do not check
+    if (this.sprite === 'images/char-boy.png') {
+        //arrow function allows 'this' to refer to Player within .forEach()
+        //thanks to my mentor Vince and @Sachin for directing me to this solution
+        allEnemies.forEach( (enemy) => {
+            //collision detection   
+            //principle learned from http://blog.sklambert.com/html5-canvas-game-2d-collision-detection
+            if (enemy.x < this.x + 70  && enemy.x + 70  > this.x &&
+                enemy.y < this.y + 70 && enemy.y + 70 > this.y){
+                this.sprite = 'images/explosion.png';
                 //adjust explosion image position to center on player position
-                player.x += 25;
-                player.y += 75;
+                this.x += 25;
+                this.y += 75;
                 //thanks to FEND student Moschops [FEND] PDX
                 //for suggestions for keyboard freeze and timeout
                 freezeKey = 1;
-                setTimeout(function() {
+                setTimeout(() => {
                     freezeKey = 0;
-                    player.reset();
+                    this.reset();
                 }, 1500);
-            };
-        } else {
-            return;
-        }
-    });
+            } else {
+                return;
+            }
+        });
+    };
     
     //win condition
     if (this.y < 40) {
